@@ -5,7 +5,6 @@ import { Dict } from "./Components/Dict";
 import {
   createTheme,
   ThemeProvider,
-  ThemeProviderProps,
 } from "@material-ui/core/styles";
 
 const darkTheme = createTheme({

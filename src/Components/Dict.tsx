@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios, { AxiosResponse } from "axios";
 import { languages } from "../Data/languages";
-import { makeStyles, createTheme } from "@material-ui/core/styles";
+import { makeStyles} from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import { List, ListItem, ListItemText } from "@material-ui/core";
@@ -29,11 +29,7 @@ export const Dict: React.FC = () => {
       const data = await axios.get(
         `https://api.dictionaryapi.dev/api/v2/entries/${lang}/${word}`
       );
-      // if (data.status === 404) {
-      // setMeanings(null);
-      // } else {
       setMeanings(data.data);
-      // }
     } catch (error) {
       console.error(error);
     }
@@ -44,21 +40,25 @@ export const Dict: React.FC = () => {
   }, [word, lang]);
 
   return (
+    
     <div className={classes.root}>
-      <Typography variant="h2" style={{ margin: 12 }}>
+      <Typography variant="h6" style={{ marginTop :30,textAlign : "left" ,color :"lightGreen"}}>
+       Website is developed By ---   <a href="https://asifalijaun.github.io/asifpersonal/" style={{textDecoration:"none",color :"whitesmoke"}}>Asif Ali</a>
+      </Typography>
+      <Typography variant="h2" style={{ margin: 12, color :"snow" }}>
         Word Hunt
       </Typography>
       <TextField
         onChange={(e) => setWord(e.target.value)}
         id="word"
         placeholder="Type The Word"
-        variant="outlined"
+        variant="filled"
       />
       <TextField
         id="lang"
         select
         label="Language"
-        variant="outlined"
+        variant="filled"
         onChange={(e) => setLang(e.target.value)}
       >
         {languages.map((language, index) => (
@@ -92,6 +92,8 @@ export const Dict: React.FC = () => {
             ))}
           </>
         ))}
+     
     </div>
+
   );
 };
